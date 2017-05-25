@@ -11,9 +11,10 @@ import java.util.LinkedList;
 
 public class DirectoryProcessor {
     public static void main(String[] args) {
+
     }
 
-    private ArrayList<LinkedList<String>> getSections(String pathToFilterFile){
+    private static ArrayList<LinkedList<String>> getSections(String pathToFilterFile){
         try(BufferedReader lineReader = new BufferedReader(new FileReader(pathToFilterFile))){ // try yo open the file
             String line = lineReader.readLine();
             ArrayList<LinkedList<String>> sections = new ArrayList<>();
