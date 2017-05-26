@@ -1,6 +1,7 @@
 package filesprocessing.manipulators;
 
 import java.io.File;
+import java.util.Comparator;
 
 /**
  * Created by OrMiz on 24/05/2017.
@@ -12,7 +13,8 @@ public class TypeOrder extends Order {
     }
 
     @Override
-    public File[] doManipulation(File[] fileArray) {
-        return new File[0];
+    Comparator<File> comparator() {
+        return null;
     }
+
 }

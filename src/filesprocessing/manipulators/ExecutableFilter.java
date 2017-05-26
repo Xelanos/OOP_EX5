@@ -11,7 +11,9 @@ public class ExecutableFilter extends PropertiesFilter {
     }
 
     @Override
-    public File[] doManipulation(File[] fileArray) {
-        return new File[0];
+    boolean checkProperty(File file) {
+        return file.canExecute();
     }
+
+
 }

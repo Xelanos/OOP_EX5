@@ -15,4 +15,9 @@ public class AllFilter extends Filter {
         if (isReversed) return null;
         else return fileArray;
     }
+
+    @Override
+    public boolean accept(File pathname) {
+        return false;
+    }
 }

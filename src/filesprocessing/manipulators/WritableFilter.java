@@ -1,6 +1,7 @@
 package filesprocessing.manipulators;
 
 import java.io.File;
+import java.util.LinkedList;
 
 /**
  * Created by OrMiz on 24/05/2017.
@@ -11,7 +12,9 @@ public class WritableFilter extends PropertiesFilter {
     }
 
     @Override
-    public File[] doManipulation(File[] fileArray) {
-        return new File[0];
+    boolean checkProperty(File file) {
+        return file.canWrite();
     }
+
+
 }

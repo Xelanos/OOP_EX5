@@ -10,8 +10,9 @@ public class SuffixFilter extends FileNameFilter {
         super(isReversed, compareString);
     }
 
+
     @Override
-    public File[] doManipulation(File[] fileArray) {
-        return new File[0];
+    public boolean accept(File pathname) {
+        return false;
     }
 }

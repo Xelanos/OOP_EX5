@@ -16,4 +16,9 @@ public class BetweenFilter extends SizeFilter {
     public File[] doManipulation(File[] fileArray) {
         return new File[0];
     }
+
+    @Override
+    public boolean accept(File pathname) {
+        return false;
+    }
 }
