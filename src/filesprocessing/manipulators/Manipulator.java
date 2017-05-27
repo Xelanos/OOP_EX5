@@ -13,6 +13,6 @@ public abstract class Manipulator {
         this.isReversed = isReversed;
     }
 
-    abstract File[] doManipulation(File[] fileArray);
+    public abstract File[] doManipulation(File[] fileArray);
 
 }

@@ -5,10 +5,10 @@ import java.io.File;
 /**
  * Created by OrMiz on 24/05/2017.
  */
-public class GreaterThenFilter extends SizeFilter {
+public class GreaterThanFilter extends SizeFilter {
 
 
-    public GreaterThenFilter(boolean isReversed, double compareValue) {
+    public GreaterThanFilter(boolean isReversed, double compareValue) {
         super(isReversed, compareValue);
     }
 

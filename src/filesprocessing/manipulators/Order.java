@@ -16,7 +16,7 @@ public abstract class Order extends Manipulator {
     }
 
     @Override
-    File[] doManipulation(File[] fileArray) {
+    public File[] doManipulation(File[] fileArray) {
         if (isReversed){
             Arrays.sort(fileArray, Collections.reverseOrder(comparator()));
         } else Arrays.sort(fileArray, comparator());
