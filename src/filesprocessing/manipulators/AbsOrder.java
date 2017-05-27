@@ -19,11 +19,6 @@ public class AbsOrder extends Order {
             public int compare(File o1, File o2) {
                 return o1.getAbsolutePath().compareTo(o2.getAbsolutePath());
             }
-
-            @Override
-            public Comparator<File> reversed() {
-                return (o1, o2) -> o2.getAbsolutePath().compareTo(o1.getAbsolutePath());
-            }
         };
     }
 }

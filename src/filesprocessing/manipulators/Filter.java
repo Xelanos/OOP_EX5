@@ -22,4 +22,5 @@ public abstract class Filter extends Manipulator implements FileFilter {
         }
         return filteredList.toArray(new File[filteredList.size()]);
     }
+
 }

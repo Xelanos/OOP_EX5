@@ -17,18 +17,16 @@ public class SizeOrder extends Order {
         return new Comparator<File>() {
             @Override
             public int compare(File o1, File o2) {
-                return (int) (o1.length() - o2.length());
-            }
-
-            @Override
-            public Comparator<File> reversed() {
-                return new Comparator<File>() {
-                    @Override
-                    public int compare(File o1, File o2) {
-                        return (int) (o2.length() - o1.length());
-                    }
-                };
+                long o1SizeInKb = o1.length() / 1024;
+                long o2SizeInKb = o2.length() / 1024;
+                long difference = o1SizeInKb - o2SizeInKb;
+                if (difference > 0){
+                    return 1;
+                } else if (difference < 0){
+                    return -1;
+                } else return 0;
             }
         };
     }
+
 }

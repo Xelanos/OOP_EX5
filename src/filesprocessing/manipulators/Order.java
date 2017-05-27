@@ -2,6 +2,7 @@ package filesprocessing.manipulators;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 
@@ -17,10 +18,12 @@ public abstract class Order extends Manipulator {
     @Override
     File[] doManipulation(File[] fileArray) {
         if (isReversed){
-            Arrays.sort(fileArray, comparator().reversed());
+            Arrays.sort(fileArray, Collections.reverseOrder(comparator()));
         } else Arrays.sort(fileArray, comparator());
         return fileArray;
     }
 
     abstract Comparator<File> comparator();
+
+
 }

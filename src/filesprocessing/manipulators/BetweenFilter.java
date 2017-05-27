@@ -13,12 +13,8 @@ public class BetweenFilter extends SizeFilter {
     }
 
     @Override
-    public File[] doManipulation(File[] fileArray) {
-        return new File[0];
+    protected boolean passCondition(double size) {
+        return  size <= upperBound && size >= lowerBound;
     }
 
-    @Override
-    public boolean accept(File pathname) {
-        return false;
-    }
 }

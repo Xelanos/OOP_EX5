@@ -13,13 +13,8 @@ public abstract class PropertiesFilter extends Filter {
 
     @Override
     public boolean accept(File pathname) {
-        boolean shouldAccept = false;
-        if (checkProperty(pathname)){
-            shouldAccept = true;
-        }
-        if (isReversed){
-            return !shouldAccept;
-        } else return shouldAccept;
+        boolean shouldAccept = checkProperty(pathname);
+        return isReversed != shouldAccept;
     }
 
     /**

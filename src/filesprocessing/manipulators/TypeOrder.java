@@ -14,7 +14,26 @@ public class TypeOrder extends Order {
 
     @Override
     Comparator<File> comparator() {
-        return null;
+        return new Comparator<File>() {
+            @Override
+            public int compare(File o1, File o2) {
+                return getType(o1).compareTo(getType(o2));
+            }
+
+            /**
+             * @param file file to get type to.
+             * @return the type of the file in string.
+             */
+            private String getType(File file){
+                String fileName = file.getName();
+                String type = "";
+                int i = fileName.lastIndexOf('.');
+                if (i > 0) {
+                    type = fileName.substring(i+1);
+                }
+                return type;
+            }
+        };
     }
 
 }

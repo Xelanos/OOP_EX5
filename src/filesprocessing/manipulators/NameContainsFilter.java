@@ -10,8 +10,9 @@ public class NameContainsFilter extends FileNameFilter {
         super(isReversed, compareString);
     }
 
+
     @Override
-    public File[] doManipulation(File[] fileArray) {
-        return new File[0];
+    protected boolean acceptCondition(String fileName) {
+        return fileName.contains(compareString);
     }
 }

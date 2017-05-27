@@ -8,17 +8,14 @@ import java.io.File;
 public class GreaterThenFilter extends SizeFilter {
 
 
-    public GreaterThenFilter(boolean isReversed, double value) {
-        super(isReversed, value);
+    public GreaterThenFilter(boolean isReversed, double compareValue) {
+        super(isReversed, compareValue);
     }
 
     @Override
-    public File[] doManipulation(File[] fileArray) {
-        return new File[0];
+    protected boolean passCondition(double size) {
+        return size >= compareToSize;
     }
 
-    @Override
-    public boolean accept(File pathname) {
-        return false;
-    }
+
 }
