@@ -14,6 +14,9 @@ class SectionAnalyzer {
         ArrayList<Manipulator> sectionManipulators = new ArrayList<>();
         Manipulator manipulator;
         int i = 0;
+        if (section.get(3) == null){
+            section.set(3, "abs");
+        }
         while (section.size() != 0) {
             section.removeFirst();
             if (section.size() != 0) {

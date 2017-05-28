@@ -40,20 +40,22 @@ public class DirectoryProcessor {
         try(BufferedReader lineReader = new BufferedReader(new FileReader(pathToFilterFile))){ // try yo open the file
             String line = lineReader.readLine();
             ArrayList<LinkedList<String>> sections = new ArrayList<>();
-            LinkedList<String> section = new LinkedList<>();
+            LinkedList<String> section;
             while (line != null){
-                section.add(line);
-                line = lineReader.readLine();
-                if (line != null) {
-                    // separate to sections
-                    if (line.equals("FILTER")) {
-                        sections.add(section);
-                        section = new LinkedList<>();
+                section = new LinkedList<>();
+                for (int i=0; i< 4;i++){
+                    if (line != null){
+                        section.add(i, line);
+                        line = lineReader.readLine();
                     }
+                    else if (i == 3){
+                            section.add(i, "abs");
+                        }
                 }
+                sections.add(section);
             }
-            sections.add(section); // add last section
             return sections;
+
         }
         catch (FileNotFoundException badFilePath){ // couldn't open the file
             System.out.println("Bad Address");
