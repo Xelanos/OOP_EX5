@@ -12,6 +12,6 @@ public class DirectoryFilter extends PropertiesFilter {
 
     @Override
     boolean checkProperty(File file) {
-        return file.isFile();
+        return file.isDirectory();
     }
 }
