@@ -18,6 +18,6 @@ public class AllFilter extends Filter {
 
     @Override
     public boolean accept(File pathname) {
-        return false;
+        return !isReversed;
     }
 }
