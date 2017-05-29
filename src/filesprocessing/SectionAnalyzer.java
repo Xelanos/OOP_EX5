@@ -40,7 +40,7 @@ class SectionAnalyzer {
                 manipulator = manipulatorFactory.getCommandManipulator(commands);
             }
             catch (FirstException e){
-                System.out.println("Warning in line"+sectionNum*(i+1));
+                System.out.println("Warning in line "+sectionNum*(i+1));
                 manipulator = null;
             }
             sectionManipulators[i/2] = manipulator;
