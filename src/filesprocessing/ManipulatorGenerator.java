@@ -11,7 +11,7 @@ class ManipulatorGenerator {
 
     Manipulator getCommandManipulator(String[] commandSeq,  int lineNum){
         String manipulatorType = commandSeq[0];
-        Manipulator manipulator = null;
+        Manipulator manipulator;
         try {
             switch (manipulatorType) {
                 case "greater_than":
@@ -61,7 +61,8 @@ class ManipulatorGenerator {
             }
         }
         catch (FirstException firstException){
-            System.err.println("Warning in line " + lineNum);
+            System.err.println("Warning in line " + lineNum + "default manipulator created");
+            return null;
         }
         return manipulator;
     }
