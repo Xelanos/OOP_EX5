@@ -11,7 +11,10 @@ import java.util.LinkedList;
 class SectionAnalyzer {
 
     static void checkSection(String[] section) throws SecondException{
-        if ((!section[0].equals("FILTER"))){
+        if ((section[0] == null) || (section[2] == null)){
+            throw new SecondException("Missing field");
+        }
+        else if ((!section[0].equals("FILTER"))){
             throw new SecondException("Missing FILTER field");
         }
         else if ((!section[2].equals("ORDER"))){

@@ -174,21 +174,39 @@ class ManipulatorGenerator {
 
     private static WritableFilter writableFilter(String[] commandSeq) throws FirstException{
         WritableFilter result;
-        boolean commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
+        boolean commandValue = false;
+        if (commandSeq.length >= 2) {
+            commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
+            if (commandSeq.length == 3){
+                commandValue = (commandValue ^ ManipulatorGenerator.getBooleanValue(commandSeq[2]));
+            }
+        }
         result = new WritableFilter(!commandValue);
         return result;
     }
 
     private static ExecutableFilter executableFilter (String[] commandSeq) throws FirstException{
         ExecutableFilter result;
-        boolean commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
+        boolean commandValue = false;
+        if (commandSeq.length >= 2) {
+            commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
+            if (commandSeq.length == 3){
+                commandValue = (commandValue ^ ManipulatorGenerator.getBooleanValue(commandSeq[2]));
+            }
+        }
         result = new ExecutableFilter(!commandValue);
         return result;
     }
 
     private static HiddenFileFilter hiddenFileFilter (String[] commandSeq) throws FirstException{
         HiddenFileFilter result;
-        boolean commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
+        boolean commandValue = false;
+        if (commandSeq.length >= 2) {
+            commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
+            if (commandSeq.length == 3){
+                commandValue = (commandValue ^ ManipulatorGenerator.getBooleanValue(commandSeq[2]));
+            }
+        }
         result = new HiddenFileFilter(!commandValue);
         return result;
     }
