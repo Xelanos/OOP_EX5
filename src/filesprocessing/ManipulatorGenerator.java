@@ -9,60 +9,54 @@ import filesprocessing.manipulators.*;
  */
 class ManipulatorGenerator {
 
-    Manipulator getCommandManipulator(String[] commandSeq,  int lineNum){
+    Manipulator getCommandManipulator(String[] commandSeq) throws FirstException{
         String manipulatorType = commandSeq[0];
         Manipulator manipulator;
-        try {
-            switch (manipulatorType) {
-                case "greater_than":
-                    manipulator = greaterThenFilter(commandSeq);
-                    break;
-                case "between":
-                    manipulator = betweenFilter(commandSeq);
-                    break;
-                case "smaller_than":
-                    manipulator = smallerThanFilter(commandSeq);
-                    break;
-                case "file":
-                    manipulator = nameEqualFilter(commandSeq);
-                    break;
-                case "contains":
-                    manipulator = nameContainsFilter(commandSeq);
-                    break;
-                case "prefix":
-                    manipulator = prefixFilter(commandSeq);
-                    break;
-                case "suffix":
-                    manipulator = suffixFilter(commandSeq);
-                    break;
-                case "writable":
-                    manipulator = writableFilter(commandSeq);
-                    break;
-                case "executable":
-                    manipulator = executableFilter(commandSeq);
-                    break;
-                case "hidden":
-                    manipulator = hiddenFileFilter(commandSeq);
-                    break;
-                case "all":
-                    manipulator = allFilter(commandSeq);
-                    break;
-                case "abs":
-                    manipulator = absOrder(commandSeq);
-                    break;
-                case "type":
-                    manipulator = typeOrder(commandSeq);
-                    break;
-                case "size":
-                    manipulator = sizeOrder(commandSeq);
-                    break;
-                default:
-                    throw new FirstException("BAD FORMAT");
-            }
-        }
-        catch (FirstException firstException){
-            System.err.println("Warning in line " + lineNum + "default manipulator created");
-            return null;
+        switch (manipulatorType) {
+            case "greater_than":
+                manipulator = greaterThenFilter(commandSeq);
+                break;
+            case "between":
+                manipulator = betweenFilter(commandSeq);
+                break;
+            case "smaller_than":
+                manipulator = smallerThanFilter(commandSeq);
+                break;
+            case "file":
+                manipulator = nameEqualFilter(commandSeq);
+                break;
+            case "contains":
+                manipulator = nameContainsFilter(commandSeq);
+                break;
+            case "prefix":
+                manipulator = prefixFilter(commandSeq);
+                break;
+            case "suffix":
+                manipulator = suffixFilter(commandSeq);
+                break;
+            case "writable":
+                manipulator = writableFilter(commandSeq);
+                break;
+            case "executable":
+                manipulator = executableFilter(commandSeq);
+                break;
+            case "hidden":
+                manipulator = hiddenFileFilter(commandSeq);
+                break;
+            case "all":
+                manipulator = allFilter(commandSeq);
+                break;
+            case "abs":
+                manipulator = absOrder(commandSeq);
+                break;
+            case "type":
+                manipulator = typeOrder(commandSeq);
+                break;
+            case "size":
+                manipulator = sizeOrder(commandSeq);
+                break;
+            default:
+                throw new FirstException("BAD FORMAT");
         }
         return manipulator;
     }

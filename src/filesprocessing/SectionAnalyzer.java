@@ -36,7 +36,13 @@ class SectionAnalyzer {
                     commands[0] = "abs";
                 }
             }
-            manipulator = manipulatorFactory.getCommandManipulator(commands, sectionNum*(i+1));
+            try {
+                manipulator = manipulatorFactory.getCommandManipulator(commands);
+            }
+            catch (FirstException e){
+                System.out.println("BAD FORMAT in line"+sectionNum*(i+1)+" default manipulator created");
+                manipulator = null;
+            }
             sectionManipulators[i/2] = manipulator;
         }
         return sectionManipulators;
