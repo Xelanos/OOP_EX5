@@ -13,7 +13,12 @@ class ManipulatorGenerator {
         double num;
         try{
             num = Double.parseDouble(value);
-            return num;
+            if (num >= 0) {
+                return num;
+            }
+            else{
+                throw new FirstException("BAD FORMAT");
+            }
         }
         catch (Exception e){
             throw new FirstException("BAD FORMAT");

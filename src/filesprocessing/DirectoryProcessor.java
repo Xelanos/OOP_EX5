@@ -3,11 +3,8 @@ package filesprocessing;
 
 import filesprocessing.manipulators.DirectoryFilter;
 import filesprocessing.manipulators.Manipulator;
-import sun.swing.SwingUtilities2;
-
 import java.io.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  * Created by OrMiz on 24/05/2017.
@@ -15,8 +12,8 @@ import java.util.LinkedList;
 
 public class DirectoryProcessor {
     public static void main(String[] args) {
-        String filterPath = args[0];
-        String directoryPath = args[1];
+        String directoryPath = args[0];
+        String filterPath = args[1];
         ArrayList<Manipulator[]> check = new ArrayList<>();
         File[] filesInDir;
         File[] result;
@@ -33,7 +30,6 @@ public class DirectoryProcessor {
                     if (manipulator != null)
                         result = manipulator.doManipulation(result);
                 }
-                System.out.println("----------");
                 for (File file : result) {
                     System.out.println(file.getName());
                 }

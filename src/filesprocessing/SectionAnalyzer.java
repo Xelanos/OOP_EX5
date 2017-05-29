@@ -93,7 +93,7 @@ class SectionAnalyzer {
             }
         }
         catch (FirstException firstException){
-            System.err.println("Warning in Line: " + lineNum);
+            System.err.println("Warning in line " + lineNum);
         }
         return manipulator;
     }
