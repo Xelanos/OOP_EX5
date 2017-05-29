@@ -13,12 +13,13 @@ import java.util.ArrayList;
 
 public class DirectoryProcessor {
     public static void main(String[] args) {
-        String directoryPath = args[0];
-        String filterPath = args[1];
         ArrayList<Manipulator[]> check = new ArrayList<>();
         File[] filesInDir;
         File[] result;
         try {
+            if (args.length != 2 ) throw new SecondException("Invalid usage - Bad arguments");
+            String directoryPath = args[0];
+            String filterPath = args[1];
             ArrayList<String[]> test = getSections(filterPath);
             for (int i = 0; i < test.size(); i++) {
                 SectionAnalyzer.checkSection(test.get(i));
@@ -40,7 +41,7 @@ public class DirectoryProcessor {
                 }
             }
         } catch (SecondException secondException) {
-            System.out.print(secondException.getMessage());
+            System.err.println("ERROR: "+ secondException.getMessage() + " /n");
         }
 
     }
