@@ -10,27 +10,38 @@ import java.util.LinkedList;
  */
 class SectionAnalyzer {
 
-    static ArrayList<Manipulator> getManipulators(LinkedList<String> section){
-        ArrayList<Manipulator> sectionManipulators = new ArrayList<>();
-        Manipulator manipulator;
-        int i = 0;
-        if (section.get(3) == null){
-            section.set(3, "abs");
+    static void checkSection(String[] section) throws SecondException{
+        if ((!section[0].equals("FILTER"))){
+            throw new SecondException("Missing FILTER field");
         }
-        while (section.size() != 0) {
-            section.removeFirst();
-            if (section.size() != 0) {
-                String[] commands = section.getFirst().split("#");
-                manipulator = getCommandManipulator(commands);
-                sectionManipulators.add(manipulator);
-                section.removeFirst();
-                i++;
+        else if ((!section[2].equals("ORDER"))){
+            throw new SecondException("Missing ORDER field");
+        }
+    }
+
+    static Manipulator[] getManipulators(String[] section, int sectionNum){
+        Manipulator[] sectionManipulators = new Manipulator[2];
+        Manipulator manipulator;
+        for (int i = 1; i < section.length; i+=2){
+            String[] commands = new String[1];
+            if (section[i] != null){
+                commands = section[i].split("#");
             }
+            else{
+                if (i == 1){
+                    commands[0] = "all";
+                }
+                else if (i == 3){
+                    commands[0] = "abs";
+                }
+            }
+            manipulator = getCommandManipulator(commands, sectionNum);
+            sectionManipulators[i/2] = manipulator;
         }
         return sectionManipulators;
     }
 
-    private static Manipulator getCommandManipulator(String[] commandSeq){
+    private static Manipulator getCommandManipulator(String[] commandSeq,  int sectionNum){
         String manipulatorType = commandSeq[0];
         Manipulator manipulator = null;
         try {
@@ -86,9 +97,5 @@ class SectionAnalyzer {
         }
         return manipulator;
     }
-
-
-
-
 }
 
