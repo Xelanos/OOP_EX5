@@ -19,14 +19,12 @@ public class DirectoryProcessor {
         String directoryPath = args[1];
         ArrayList<Manipulator[]> check = new ArrayList<>();
         File[] filesInDir;
-        File[] result = new File[1];
+        File[] result;
         try {
             ArrayList<String[]> test = getSections(filterPath);
             for (int i = 0; i < test.size(); i++) {
                 SectionAnalyzer.checkSection(test.get(i));
-            }
-            for (int i = 0; i < test.size(); i++) {
-                check.add(SectionAnalyzer.getManipulators(test.get(i), i));
+                check.add(SectionAnalyzer.getManipulators(test.get(i), i+1));
             }
             filesInDir = getFilesArray(directoryPath);
             for (Manipulator[] manipulators : check) {

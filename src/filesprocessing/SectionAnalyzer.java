@@ -35,13 +35,13 @@ class SectionAnalyzer {
                     commands[0] = "abs";
                 }
             }
-            manipulator = getCommandManipulator(commands, sectionNum);
+            manipulator = getCommandManipulator(commands, sectionNum*(i+1));
             sectionManipulators[i/2] = manipulator;
         }
         return sectionManipulators;
     }
 
-    private static Manipulator getCommandManipulator(String[] commandSeq,  int sectionNum){
+    private static Manipulator getCommandManipulator(String[] commandSeq,  int lineNum){
         String manipulatorType = commandSeq[0];
         Manipulator manipulator = null;
         try {
@@ -89,11 +89,11 @@ class SectionAnalyzer {
                     manipulator = ManipulatorGenerator.sizeOrder(commandSeq);
                     break;
                     default:
-                        throw new NoSuchFieldException("BAD FORMAT1");
+                        throw new FirstException("BAD FORMAT");
             }
         }
-        catch (NoSuchFieldException e){
-            System.out.println(e.getMessage());
+        catch (FirstException firstException){
+            System.err.println("Warning in Line: " + lineNum);
         }
         return manipulator;
     }
