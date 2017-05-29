@@ -9,6 +9,63 @@ import filesprocessing.manipulators.*;
  */
 class ManipulatorGenerator {
 
+    Manipulator getCommandManipulator(String[] commandSeq,  int lineNum){
+        String manipulatorType = commandSeq[0];
+        Manipulator manipulator = null;
+        try {
+            switch (manipulatorType) {
+                case "greater_than":
+                    manipulator = greaterThenFilter(commandSeq);
+                    break;
+                case "between":
+                    manipulator = betweenFilter(commandSeq);
+                    break;
+                case "smaller_than":
+                    manipulator = smallerThanFilter(commandSeq);
+                    break;
+                case "file":
+                    manipulator = nameEqualFilter(commandSeq);
+                    break;
+                case "contains":
+                    manipulator = nameContainsFilter(commandSeq);
+                    break;
+                case "prefix":
+                    manipulator = prefixFilter(commandSeq);
+                    break;
+                case "suffix":
+                    manipulator = suffixFilter(commandSeq);
+                    break;
+                case "writable":
+                    manipulator = writableFilter(commandSeq);
+                    break;
+                case "executable":
+                    manipulator = executableFilter(commandSeq);
+                    break;
+                case "hidden":
+                    manipulator = hiddenFileFilter(commandSeq);
+                    break;
+                case "all":
+                    manipulator = allFilter(commandSeq);
+                    break;
+                case "abs":
+                    manipulator = absOrder(commandSeq);
+                    break;
+                case "type":
+                    manipulator = typeOrder(commandSeq);
+                    break;
+                case "size":
+                    manipulator = sizeOrder(commandSeq);
+                    break;
+                default:
+                    throw new FirstException("BAD FORMAT");
+            }
+        }
+        catch (FirstException firstException){
+            System.err.println("Warning in line " + lineNum);
+        }
+        return manipulator;
+    }
+
     private static double getDoubleValue(String value) throws FirstException{
         double num;
         try{
@@ -39,7 +96,7 @@ class ManipulatorGenerator {
         return result;
     }
 
-    public static GreaterThanFilter greaterThenFilter(String[] commandSeq) throws FirstException{
+    private static GreaterThanFilter greaterThenFilter(String[] commandSeq) throws FirstException{
         GreaterThanFilter result;
         boolean value = false;
         double commandValue = ManipulatorGenerator.getDoubleValue(commandSeq[1]);
@@ -50,7 +107,7 @@ class ManipulatorGenerator {
         return result;
     }
 
-    public static BetweenFilter betweenFilter(String[] commandSeq) throws FirstException{
+    private static BetweenFilter betweenFilter(String[] commandSeq) throws FirstException{
         BetweenFilter result;
         boolean value = false;
         double lowBound = ManipulatorGenerator.getDoubleValue(commandSeq[1]);
@@ -65,7 +122,7 @@ class ManipulatorGenerator {
         return result;
     }
 
-    public static SmallerThanFilter smallerThanFilter(String[] commandSeq) throws FirstException{
+    private static SmallerThanFilter smallerThanFilter(String[] commandSeq) throws FirstException{
         SmallerThanFilter result;
         boolean value = false;
         double commandValue = ManipulatorGenerator.getDoubleValue(commandSeq[1]);
@@ -76,7 +133,7 @@ class ManipulatorGenerator {
         return result;
     }
 
-    public static NameEqualFilter nameEqualFilter(String[] commandSeq) throws FirstException{
+    private static NameEqualFilter nameEqualFilter(String[] commandSeq) throws FirstException{
         NameEqualFilter result;
         boolean value = false;
         String commandValue = commandSeq[1];
@@ -87,7 +144,7 @@ class ManipulatorGenerator {
         return result;
     }
 
-    public static NameContainsFilter nameContainsFilter(String[] commandSeq) throws FirstException{
+    private static NameContainsFilter nameContainsFilter(String[] commandSeq) throws FirstException{
         NameContainsFilter result;
         boolean value = false;
         String commandValue = commandSeq[1];
@@ -98,7 +155,7 @@ class ManipulatorGenerator {
         return result;
     }
 
-    public static PrefixFilter prefixFilter(String[] commandSeq) throws FirstException{
+    private static PrefixFilter prefixFilter(String[] commandSeq) throws FirstException{
         PrefixFilter result;
         boolean value = false;
         String commandValue = commandSeq[1];
@@ -109,7 +166,7 @@ class ManipulatorGenerator {
         return result;
     }
 
-    public static SuffixFilter suffixFilter(String[] commandSeq) throws FirstException{
+    private static SuffixFilter suffixFilter(String[] commandSeq) throws FirstException{
         SuffixFilter result;
         boolean value = false;
         String commandValue = commandSeq[1];
@@ -120,35 +177,35 @@ class ManipulatorGenerator {
         return result;
     }
 
-    public static WritableFilter writableFilter(String[] commandSeq) throws FirstException{
+    private static WritableFilter writableFilter(String[] commandSeq) throws FirstException{
         WritableFilter result;
         boolean commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
         result = new WritableFilter(!commandValue);
         return result;
     }
 
-    public static ExecutableFilter executableFilter (String[] commandSeq) throws FirstException{
+    private static ExecutableFilter executableFilter (String[] commandSeq) throws FirstException{
         ExecutableFilter result;
         boolean commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
         result = new ExecutableFilter(!commandValue);
         return result;
     }
 
-    public static HiddenFileFilter hiddenFileFilter (String[] commandSeq) throws FirstException{
+    private static HiddenFileFilter hiddenFileFilter (String[] commandSeq) throws FirstException{
         HiddenFileFilter result;
         boolean commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
         result = new HiddenFileFilter(!commandValue);
         return result;
     }
 
-    public static AllFilter allFilter (String[] commandSeq) throws FirstException{
+    private static AllFilter allFilter (String[] commandSeq) throws FirstException{
         AllFilter result;
         boolean commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
         result = new AllFilter(commandValue);
         return result;
     }
 
-    public static AbsOrder absOrder (String[] commandSeq) throws FirstException{
+    private static AbsOrder absOrder (String[] commandSeq) throws FirstException{
         AbsOrder result;
         boolean commandValue = false;
         if (commandSeq.length >= 2) {
@@ -158,7 +215,7 @@ class ManipulatorGenerator {
         return result;
     }
 
-    public static TypeOrder typeOrder (String[] commandSeq) throws FirstException{
+    private static TypeOrder typeOrder (String[] commandSeq) throws FirstException{
         TypeOrder result;
         boolean commandValue = false;
         if (commandSeq.length >= 2) {
@@ -168,7 +225,7 @@ class ManipulatorGenerator {
         return result;
     }
 
-    public static SizeOrder sizeOrder (String[] commandSeq) throws FirstException{
+    private static SizeOrder sizeOrder (String[] commandSeq) throws FirstException{
         SizeOrder result;
         boolean commandValue = false;
         if (commandSeq.length >= 2) {
