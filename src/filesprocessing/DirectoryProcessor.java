@@ -41,7 +41,7 @@ public class DirectoryProcessor {
                 }
             }
         } catch (SecondException secondException) {
-            System.err.println("ERROR: "+ secondException.getMessage() + " /n");
+            System.err.println(secondException.getMessage());
         }
 
     }
