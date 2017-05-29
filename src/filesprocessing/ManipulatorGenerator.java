@@ -213,8 +213,10 @@ class ManipulatorGenerator {
 
     private static AllFilter allFilter (String[] commandSeq) throws FirstException{
         AllFilter result;
-        boolean commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
-        result = new AllFilter(commandValue);
+        boolean commandValue = false;
+        if (commandSeq.length >= 2) {
+            commandValue = ManipulatorGenerator.getBooleanValue(commandSeq[1]);
+        }        result = new AllFilter(commandValue);
         return result;
     }
 
