@@ -1,6 +1,7 @@
 
 package filesprocessing;
 
+import filesprocessing.manipulators.AbsOrder;
 import filesprocessing.manipulators.DirectoryFilter;
 import filesprocessing.manipulators.Manipulator;
 import java.io.*;
@@ -26,10 +27,14 @@ public class DirectoryProcessor {
             filesInDir = getFilesArray(directoryPath);
             for (Manipulator[] manipulators : check) {
                 result = filesInDir;
-                for (Manipulator manipulator : manipulators) {
-                    if (manipulator != null)
-                        result = manipulator.doManipulation(result);
-                }
+                Manipulator defaultOrder = new AbsOrder(false);
+                Manipulator filter = manipulators[0];
+                Manipulator order = manipulators[1];
+
+                if (filter != null) result = filter.doManipulation(result);
+                if (result == null) continue;
+                result = defaultOrder.doManipulation(result);
+                if (order != null) result = order.doManipulation(result);
                 for (File file : result) {
                     System.out.println(file.getName());
                 }
