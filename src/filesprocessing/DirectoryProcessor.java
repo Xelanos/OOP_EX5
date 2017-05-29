@@ -26,9 +26,9 @@ public class DirectoryProcessor {
                 check.add(SectionAnalyzer.getManipulators(test.get(i), i+1));
             }
             filesInDir = getFilesArray(directoryPath);
+            Manipulator defaultOrder = new AbsOrder(false);
             for (Manipulator[] manipulators : check) {
                 result = filesInDir;
-                Manipulator defaultOrder = new AbsOrder(false);
                 Manipulator filter = manipulators[0];
                 Manipulator order = manipulators[1];
 
