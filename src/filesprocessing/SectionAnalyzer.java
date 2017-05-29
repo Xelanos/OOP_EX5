@@ -40,7 +40,7 @@ class SectionAnalyzer {
                 manipulator = manipulatorFactory.getCommandManipulator(commands);
             }
             catch (FirstException e){
-                System.out.println("BAD FORMAT in line"+sectionNum*(i+1)+" default manipulator created");
+                System.out.println("Warning in line"+sectionNum*(i+1));
                 manipulator = null;
             }
             sectionManipulators[i/2] = manipulator;
