@@ -43,7 +43,18 @@ class SectionAnalyzer {
                 manipulator = manipulatorFactory.getCommandManipulator(commands);
             }
             catch (FirstException e){
-                System.err.println("Warning in line " + (4*(sectionNum-1) + (i+1)));
+                int lineNumber = 0;
+                if (sectionNum > 1){
+                    for (int index = 0; index < sectionNum - 1; index++){
+                        lineNumber +=  DirectoryProcessor.lines.get(index);
+                    }
+                    lineNumber += (i+1);
+                }
+                else
+                {
+                    lineNumber = i + 1;
+                }
+                System.err.println("Warning in line " + lineNumber);
                 manipulator = null;
             }
             sectionManipulators[i/2] = manipulator;

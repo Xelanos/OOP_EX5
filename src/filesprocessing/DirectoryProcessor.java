@@ -6,16 +6,19 @@ import filesprocessing.manipulators.DirectoryFilter;
 import filesprocessing.manipulators.Manipulator;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Created by OrMiz on 24/05/2017.
  */
 
 public class DirectoryProcessor {
+
+    public static LinkedList<Integer> lines;
     public static void main(String[] args) {
-        ArrayList<Manipulator[]> check = new ArrayList<>();
         File[] filesInDir;
         File[] result;
+        lines = new LinkedList<>();
         try {
             if (args.length != 2 ) throw new SecondException("Invalid usage - Bad arguments");
             String directoryPath = args[0];
@@ -51,13 +54,16 @@ public class DirectoryProcessor {
 
     private static ArrayList<String[]> getSections(String pathToFilterFile) throws SecondException{
         ArrayList<String[]> sections = new ArrayList<>();
+        int sectionLineCounter;
         try(BufferedReader lineReader = new BufferedReader(new FileReader(pathToFilterFile))) { // try yo open the file
             String[] section;
             String line = lineReader.readLine();
             while (line != null){
+                sectionLineCounter = 0;
                 section = new String[4];
                 for (int i = 0; i < 4; i++){
                         section[i] = line;
+                        sectionLineCounter++;
                         line = lineReader.readLine();
                     if (line != null) {
                         if ((i != 0) && (line.equals("FILTER"))) {
@@ -65,6 +71,7 @@ public class DirectoryProcessor {
                         }
                     }
                 }
+                lines.add(sectionLineCounter);
                 sections.add(section);
             }
         }
