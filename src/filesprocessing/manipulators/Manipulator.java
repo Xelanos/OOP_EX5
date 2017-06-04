@@ -15,4 +15,11 @@ public abstract class Manipulator {
 
     public abstract File[] doManipulation(File[] fileArray);
 
+    /**
+     * @return if the manipulator is reversed or not
+     */
+    public boolean isReversed(){
+        return isReversed;
+    }
+
 }

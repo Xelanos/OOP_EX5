@@ -34,8 +34,11 @@ public class DirectoryProcessor {
 
                 if (filter != null) result = filter.doManipulation(result);
                 if (result == null) continue;
-                result = defaultOrder.doManipulation(result);
-                if (order != null) result = order.doManipulation(result);
+                if (order != null){
+                    defaultOrder = new AbsOrder(order.isReversed());
+                    result = defaultOrder.doManipulation(result);
+                    result = order.doManipulation(result);
+                } else result = defaultOrder.doManipulation(result);
                 for (File file : result) {
                     System.out.println(file.getName());
                 }
