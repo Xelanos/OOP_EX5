@@ -21,17 +21,17 @@ public class DirectoryProcessor {
             String directoryPath = args[0];
             String filterPath = args[1];
             ArrayList<String[]> test = getSections(filterPath);
-            for (int i = 0; i < test.size(); i++) {
-                SectionAnalyzer.checkSection(test.get(i));
-                check.add(SectionAnalyzer.getManipulators(test.get(i), i+1));
-            }
+            Manipulator[] manipulators;
             filesInDir = getFilesArray(directoryPath);
             Manipulator defaultOrder = new AbsOrder(false);
-            for (Manipulator[] manipulators : check) {
+            for (String[] section : test){
+                SectionAnalyzer.checkSection(section);
+            }
+            for (int i = 0; i < test.size(); i++) {
+                manipulators = SectionAnalyzer.getManipulators(test.get(i), i+1);
                 result = filesInDir;
                 Manipulator filter = manipulators[0];
                 Manipulator order = manipulators[1];
-
                 if (filter != null) result = filter.doManipulation(result);
                 if (result == null) continue;
                 if (order != null){
@@ -57,8 +57,13 @@ public class DirectoryProcessor {
             while (line != null){
                 section = new String[4];
                 for (int i = 0; i < 4; i++){
-                    section[i] = line;
-                    line = lineReader.readLine();
+                        section[i] = line;
+                        line = lineReader.readLine();
+                    if (line != null) {
+                        if ((i != 0) && (line.equals("FILTER"))) {
+                            break;
+                        }
+                    }
                 }
                 sections.add(section);
             }

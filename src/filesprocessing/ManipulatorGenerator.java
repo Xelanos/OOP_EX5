@@ -131,7 +131,13 @@ class ManipulatorGenerator {
     private static NameEqualFilter nameEqualFilter(String[] commandSeq) throws FirstException{
         NameEqualFilter result;
         boolean value = false;
-        String commandValue = commandSeq[1];
+        String commandValue = "";
+        if (commandSeq.length >= 2) {
+            commandValue = commandSeq[1];
+        }
+        else {
+            throw new FirstException("");
+        }
         if (commandSeq.length >= 3){
             value = ManipulatorGenerator.getBooleanValue(commandSeq[2]);
         }
