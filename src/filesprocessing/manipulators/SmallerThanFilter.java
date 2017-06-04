@@ -11,7 +11,7 @@ public class SmallerThanFilter extends SizeFilter {
 
     @Override
     protected boolean passCondition(double size) {
-        return size <= compareToSize;
+        return size < compareToSize;
     }
 
 }
