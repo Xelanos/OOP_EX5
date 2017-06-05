@@ -4,9 +4,13 @@ import java.io.File;
 import java.util.LinkedList;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ *A class for writable file filter.
  */
 public class WritableFilter extends PropertiesFilter {
+    /**
+     * constructor for the filter.
+     * @param isReversed true if the filter should be reversed
+     */
     public WritableFilter(boolean isReversed) {
         super(isReversed);
     }

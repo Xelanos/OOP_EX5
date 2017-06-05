@@ -3,11 +3,18 @@ package filesprocessing.manipulators;
 import java.io.File;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ * A class for File Name Filters
  */
 public abstract class FileNameFilter extends Filter {
+
+    /** string to check in files */
     protected String compareString;
 
+    /**
+     * constructor for the filter.
+     * @param isReversed true if the filter should be reversed
+     * @param compareString string to compare in the file
+     */
     public FileNameFilter(boolean isReversed, String compareString) {
         super(isReversed);
         this.compareString = compareString;
@@ -22,7 +29,7 @@ public abstract class FileNameFilter extends Filter {
 
     /**
      * checks if the files name hold the condition of the filter.
-     * @param fileName name no check
+     * @param fileName name to check
      * @return true if file should pass the filter, false if not
      */
     protected abstract boolean acceptCondition(String fileName);

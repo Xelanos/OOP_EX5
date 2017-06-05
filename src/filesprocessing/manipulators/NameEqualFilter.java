@@ -1,14 +1,19 @@
 package filesprocessing.manipulators;
 
-import java.io.File;
 import java.util.Objects;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ * A class for file name equal filter.
  */
 public class NameEqualFilter extends FileNameFilter {
-    public NameEqualFilter(boolean isReversed, String compareString) {
-        super(isReversed, compareString);
+
+    /**
+     * constructor for the filter.
+     * @param isReversed true if the filter should be reversed
+     * @param compareName name to to compare the file name to.
+     */
+    public NameEqualFilter(boolean isReversed, String compareName) {
+        super(isReversed, compareName);
     }
 
     @Override

@@ -3,9 +3,13 @@ package filesprocessing.manipulators;
 import java.io.File;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ * A class to pass all files.
  */
 public class AllFilter extends Filter {
+    /**
+     * constructor for the filter.
+     * @param isReversed true if the filter should be reversed
+     */
     public AllFilter(boolean isReversed) {
         super(isReversed);
     }

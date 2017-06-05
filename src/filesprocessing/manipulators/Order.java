@@ -7,15 +7,23 @@ import java.util.Comparator;
 
 
 /**
- * Created by OrMiz on 24/05/2017.
+ * An abstract class for order type manipulator.
  */
 public abstract class Order extends Manipulator {
 
+    /**
+     * constructor for the order.
+     * @param isReversed true if the order should be reversed
+     */
     public Order(boolean isReversed) {
         super(isReversed);
     }
 
-    @Override
+    /**
+     * takes a file array, and order it based on the natural order imposed by the comparator provided.
+     * @param fileArray array to manipulate.
+     * @return the array after required order.
+     */
     public File[] doManipulation(File[] fileArray) {
         if (isReversed){
             Arrays.sort(fileArray, Collections.reverseOrder(comparator()));
@@ -23,6 +31,9 @@ public abstract class Order extends Manipulator {
         return fileArray;
     }
 
+    /**
+     * @return comparator to imposed a natural order based on it.
+     */
     abstract Comparator<File> comparator();
 
 

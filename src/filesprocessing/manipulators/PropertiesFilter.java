@@ -4,9 +4,13 @@ import java.io.File;
 import java.util.LinkedList;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ * A class for file properties filters.
  */
 public abstract class PropertiesFilter extends Filter {
+    /**
+     * constructor for the filter.
+     * @param isReversed true if the filter should be reversed
+     */
     public PropertiesFilter(boolean isReversed) {
         super(isReversed);
     }
@@ -19,7 +23,7 @@ public abstract class PropertiesFilter extends Filter {
 
     /**
      * checks if supplied file has the property
-     * @param file file to check
+     * @param file file to check.
      * @return true if file has the property, false if not
      */
     abstract boolean checkProperty(File file);
