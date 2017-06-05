@@ -29,7 +29,7 @@ public class DirectoryProcessor {
         lines = new LinkedList<>();
         try {
             // check arguments
-            if (args.length != NUMBER_OF_ARGUMENTS ) throw new SecondException("Invalid usage - Bad arguments");
+            if (args.length != NUMBER_OF_ARGUMENTS ) throw new SecondException(" Bad number of arguments");
             String directoryPath = args[DIRECTORY_PATH];
             String filterPath = args[FILTER_PATH];
             Manipulator[] manipulators; // will store all the manipulators in the file.
@@ -71,7 +71,8 @@ public class DirectoryProcessor {
     private static ArrayList<String[]> getSections(String pathToFilterFile) throws SecondException{
         ArrayList<String[]> sections = new ArrayList<>();
         int sectionLineCounter;
-        try(BufferedReader lineReader = new BufferedReader(new FileReader(pathToFilterFile))) { // try yo open the file
+        try(BufferedReader lineReader = new BufferedReader(new FileReader(pathToFilterFile))) {
+            // try to open the file
             String[] section;
             String line = lineReader.readLine();
             while (line != null){
