@@ -3,9 +3,13 @@ package filesprocessing.manipulators;
 import java.io.File;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ *A class for executable files filter.
  */
 public class ExecutableFilter extends PropertiesFilter {
+    /**
+     * constructor for the filter.
+     * @param isReversed true if the filter should be reversed
+     */
     public ExecutableFilter(boolean isReversed) {
         super(isReversed);
     }

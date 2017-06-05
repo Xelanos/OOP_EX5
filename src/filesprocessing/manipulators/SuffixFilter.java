@@ -1,27 +1,34 @@
 package filesprocessing.manipulators;
 
-import java.io.File;
+import java.util.Objects;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ * A class for suffix filter.
  */
 public class SuffixFilter extends FileNameFilter {
-    public SuffixFilter(boolean isReversed, String compareString) {
-        super(isReversed, compareString);
+
+    /**
+     * constructor for the filter.
+     * @param isReversed true if the filter should be reversed
+     * @param compareSuffix suffix to to compare in the file
+     */
+    public SuffixFilter(boolean isReversed, String compareSuffix) {
+        super(isReversed, compareSuffix);
     }
 
     @Override
     protected boolean acceptCondition(String fileName) {
         String fileSuffix = getSuffix(fileName);
-        return fileSuffix.equals(compareString);
+        return Objects.equals(fileSuffix, compareString);
     }
 
 
     /**
+     * @param fileName the file to check suffix in.
      * @return last letters of the file name, by number of letters in string to compare.
-     * if compare string is larger then files name, returns null
+     * if compare string is larger then files name, returns null.
      */
-    protected String getSuffix(String fileName) {
+    private String getSuffix(String fileName) {
         int searchStringSize = compareString.length();
         int fileNameSize = fileName.length();
         int subStringStartIndex = fileNameSize - searchStringSize;

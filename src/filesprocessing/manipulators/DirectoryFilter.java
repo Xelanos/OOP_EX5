@@ -3,9 +3,13 @@ package filesprocessing.manipulators;
 import java.io.File;
 
 /**
- * Created by OrMiz on 27/05/2017.
+ *A class for a directory filter.
  */
 public class DirectoryFilter extends PropertiesFilter {
+    /**
+     * constructor for the filter.
+     * @param isReversed true if the filter should be reversed
+     */
     public DirectoryFilter(boolean isReversed) {
         super(isReversed);
     }

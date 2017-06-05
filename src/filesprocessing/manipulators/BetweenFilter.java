@@ -1,15 +1,19 @@
 package filesprocessing.manipulators;
 
-import java.io.File;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ * A class for in between filter
  */
 public class BetweenFilter extends SizeFilter {
 
-
-    public BetweenFilter(boolean isReversed, double lowerBound, double UpperBound) {
-        super(isReversed, lowerBound, lowerBound);
+    /**
+     * constructor for the filter with two sided comparison.
+     * @param isReversed true if the filter should reversed.
+     * @param lowerBound lower bound of the comparison
+     * @param upperBound upper bound of the comparison
+     */
+    public BetweenFilter(boolean isReversed, double lowerBound, double upperBound) {
+        super(isReversed, lowerBound, upperBound);
     }
 
     @Override

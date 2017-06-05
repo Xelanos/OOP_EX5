@@ -4,15 +4,21 @@ import java.io.File;
 import java.util.Comparator;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ * A class for ordering by type of file.
  */
 public class TypeOrder extends Order {
 
+    /**
+     * constructor for the order.
+     * @param isReversed true if the order should be reversed
+     */
     public TypeOrder(boolean isReversed) {
         super(isReversed);
     }
 
-    @Override
+    /**
+     * @return comparator such that compers between two files by their type.
+     */
     Comparator<File> comparator() {
         return new Comparator<File>() {
             @Override

@@ -3,9 +3,13 @@ package filesprocessing.manipulators;
 import java.io.File;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ *A class for hidden files filter.
  */
 public class HiddenFileFilter extends PropertiesFilter {
+    /**
+     * constructor for the filter.
+     * @param isReversed true if the filter should be reversed
+     */
     public HiddenFileFilter(boolean isReversed) {
         super(isReversed);
     }

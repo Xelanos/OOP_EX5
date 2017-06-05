@@ -4,15 +4,21 @@ import java.io.File;
 import java.util.Comparator;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ *A class for ordering files by size.
  */
 public class SizeOrder extends Order {
 
+    /**
+     * constructor for the order.
+     * @param isReversed true if the order should be reversed
+     */
     public SizeOrder(boolean isReversed) {
         super(isReversed);
     }
 
-    @Override
+    /**
+     * @return comparator such that compers between two files by their size.
+     */
     Comparator<File> comparator() {
         return new Comparator<File>() {
             @Override

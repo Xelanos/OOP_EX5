@@ -1,13 +1,16 @@
 package filesprocessing.manipulators;
 
-import java.io.File;
 
 /**
- * Created by OrMiz on 24/05/2017.
+ * A class for the Greater_then filter
  */
 public class GreaterThanFilter extends SizeFilter {
 
-
+    /**
+     * constructor for the filter
+     * @param isReversed true if the filter should reversed.
+     * @param compareValue value to check if larger from from
+     */
     public GreaterThanFilter(boolean isReversed, double compareValue) {
         super(isReversed, compareValue);
     }
