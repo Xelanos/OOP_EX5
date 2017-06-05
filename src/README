@@ -11,12 +11,12 @@ filenames that passed the filtering according to various properties.
 
 The Files in the Package:
 
-1.  DirectoryProcessor.java:    The main class of the program, gets the arguments and running the whole manipulation
-                                process.
+1.  DirectoryProcessor.java:    The main class of the program, gets the arguments and running the whole
+                                manipulation process.
 
 2.  SectionAnalyzer.java:   This class is taking care of all the section analyzing during the program process.
-                            It gets a section and checking it, creating manipulators by the section commands and also
-                            validating the input is correct.
+                            It gets a section and checking it, creating manipulators by the section commands
+                            and also validating the input is correct.
 
 3. FirstException.java:     This exception thrown when there is a warning in the program. We made this class just to
                             have more readable code and for easy flow.
@@ -47,6 +47,16 @@ All the manipulators are SubClass of the Manipulator class, so using Polymorphis
 manipulator into the correct Manipulator class.
 
 After getting the manipulators we go one by one and do the manipulation on all the files.
+
+In the program there are two types of exceptions. First we check if there is a SecondException, once it
+occurs we stop the program. This exception is thrown only in one place, the SectionAnalyzer class, and we
+catch it at the main method. This class override the getMessage method of the Exception class in order to
+print everything in the correct format.
+After we passed the SecondException check we continue with the process and check in every manipulator
+creation if there is a FirstException. we catch this exception only at the getManipulators method at the
+SectionAnalyzer class. this method also calculates the line number (more about it in the implementation
+section). we made the FirsException class just of convenience reasons.
+
 
 
 
