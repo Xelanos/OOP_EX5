@@ -1,11 +1,34 @@
+yanirelfassy
 xelanos
-xelanos
-                                         README for ex0: Knesset
+                                         README for ex5: Directory Processor
 
 ==============================================================================================================
                                            =  Description  =
 ==============================================================================================================
+This program is a flexible framework for working with files.
+The program will filter the files in a given directory according to various conditions, and order the
+filenames that passed the filtering according to various properties.
 
+The Files in the Package:
+
+1.  DirectoryProcessor.java:    The main class of the program, gets the arguments and running the whole manipulation
+                                process.
+
+2.  SectionAnalyzer.java:   This class is taking care of all the section analyzing during the program process.
+                            It gets a section and checking it, creating manipulators by the section commands and also
+                            validating the input is correct.
+
+3. FirstException.java:     This exception thrown when there is a warning in the program. We made this class just to
+                            have more readable code and for easy flow.
+
+4. ManipulatorGenerator.java:   This class gets a command line and makes the manipulators requested. it validates the
+                                data and using polymorphism makes the correct manipulator.
+
+5. SecondException.java:    This exception thrown when there is an error with the format of the FLT file. we override
+                            the get_message() method in order to print the message in the wanted template.
+
+6. manipulators package:    This package includes all the filters and order types. each class in the package represents
+                            a type of filter / order and does the wanted action.
 
 
 ==============================================================================================================
