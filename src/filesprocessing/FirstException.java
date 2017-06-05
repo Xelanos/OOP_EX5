@@ -1,7 +1,8 @@
 package filesprocessing;
 
 /**
- * Created by Yanir on 29/05/2017.
+ * FIRST TYPE OF EXCEPTION
+ * MADE FOR COMFORTABLE USE
  */
 public class FirstException extends Exception {
 
