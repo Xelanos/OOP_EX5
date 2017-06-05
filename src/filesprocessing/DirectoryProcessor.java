@@ -19,6 +19,8 @@ public class DirectoryProcessor {
     private static final int FILTER_PATH = 1;
     private static final int NUMBER_OF_ARGUMENTS = 2;
     private static final int SECTION_TOTAL_LENGTH = 4;
+    private static final int SECTION_FILTER_MANIPULATOR = 0;
+    private static final int SECTION_ORDER_MANIPULATOR = 1;
 
     static LinkedList<Integer> lines;   // will store the number of lines in each section
     public static void main(String[] args) {
@@ -34,14 +36,15 @@ public class DirectoryProcessor {
             ArrayList<String[]> sections = getSections(filterPath);
             filesInDir = getFilesArray(directoryPath);
             Manipulator defaultOrder = new AbsOrder(false);
+            // checking if the template of the sections is valid.
             for (String[] section : sections){
                 SectionAnalyzer.checkSection(section);
             }
             for (int i = 0; i < sections.size(); i++) {
                 manipulators = SectionAnalyzer.getManipulators(sections.get(i), i+1);
                 result = filesInDir;
-                Manipulator filter = manipulators[0];
-                Manipulator order = manipulators[1];
+                Manipulator filter = manipulators[SECTION_FILTER_MANIPULATOR];
+                Manipulator order = manipulators[SECTION_ORDER_MANIPULATOR];
                 if (filter != null) result = filter.doManipulation(result);
                 if (result == null) continue;
                 if (order != null){
