@@ -29,14 +29,25 @@ The Files in the Package:
 
 6. manipulators package:    This package includes all the filters and order types. each class in the package represents
                             a type of filter / order and does the wanted action.
+                            All filters in package supports Javas File "filter" method.
 
 
 ==============================================================================================================
                                               =  Design  =
 ==============================================================================================================
 
-jar creating code :
-jar -cvf ex5.jar README filesprocessing/*.java filesprocessing/manipulators/*.java
+We designed the package with a lot of modularity in mind:
+    Firstly, all of the filters and orders classes are in a separate subpackage called  "Manipulators", said
+    subpackage can be used with EVERY other program since all of its classes takes a File array, and does some
+    manipulation on it (hence the name), and returns the manipulated array.
+    In this subpackage, we have abstract classes for each type of filter and order such that if someone wants
+    to add a filter or an order, all they have to do is extend the appropriate manipulator and write maybe
+    one or two helper functions. We did this so the program would have more EXTENSIBILITY.
+    Also since any program can use said manipulators, and all filters work with Javas File "filter" method,
+    our code is also very REUSABLE.
+
+    We used the factory design paradigm when translating lines of the commend file with the
+    ManipulatorGenerator class, which is the only one who know
 
 
 ==============================================================================================================
@@ -49,3 +60,7 @@ jar -cvf ex5.jar README filesprocessing/*.java filesprocessing/manipulators/*.ja
 ==============================================================================================================
                                         =  Answers to Questions  =
 ==============================================================================================================
+
+
+jar creating code :
+jar -cvf ex5.jar README filesprocessing/*.java filesprocessing/manipulators/*.java
