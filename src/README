@@ -36,6 +36,20 @@ The Files in the Package:
                                               =  Design  =
 ==============================================================================================================
 
+The whole process managed by the DirectoryProcessor class. This class is reading the file and separating it into
+sections. We save the sections in an ArrayList because it's dynamic and we don't know how many sections we have in the
+FLT file.
+After separating the sections we check that they are in the correct format (no the commands format but the template).
+Once all the sections are good, and we didn't get a SecondException that stops the program, we send the each section
+to the SectionAnalyzer class. The class separate the command lines from the section and using the ManipulatorGenerator
+gets the correct Manipulator with it's values.
+
+All the manipulators are SubClass of the Manipulator class, so using Polymorphism we have no problem to "convert" each
+manipulator into the correct Manipulator class.
+
+After getting the manipulators we go one by one and do the manipulation on all the files.
+
+
 We designed the package with a lot of modularity in mind:
     Firstly, all of the filters and orders classes are in a separate subpackage called  "Manipulators", said
     subpackage can be used with EVERY other program since all of its classes takes a File array, and does some
